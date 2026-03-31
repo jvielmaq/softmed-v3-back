@@ -19,10 +19,11 @@ public sealed class Autenticar
     public async Task<object> Ejecutar()
     {
         // ── 1. Extraer email y password de Solicitud.Data ─────────────────────
-        if (_solicitud.Data is not JsonElement dataElement)
+        var dataJson = _solicitud.Data as string ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(dataJson))
             throw new ArgumentException("El campo 'Data' es requerido para la acción AUTENTICAR.");
 
-        var datos = dataElement.Deserialize<DatosLogin>(new JsonSerializerOptions
+        var datos = JsonSerializer.Deserialize<DatosLogin>(dataJson, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
         }) ?? throw new ArgumentException("No se pudo deserializar los datos de login.");
