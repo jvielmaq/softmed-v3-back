@@ -75,9 +75,11 @@ public class Function
         }
         catch (Exception ex)
         {
-            context.Logger.LogError(
-                $"[500] Error inesperado — MODULE={solicitud?.MODULE} ACTION={solicitud?.ACTION} | {ex}");
-            return BuildResponse(500, new { error = "Error interno del servidor." });
+            var isDev = Environment.GetEnvironmentVariable("AMBIENTE") == "DEV";
+            context.Logger.LogError($"[500] {ex.GetType().Name}: {ex.Message} | Inner: {ex.InnerException?.Message}");
+            return BuildResponse(500, isDev
+                ? new { error = ex.Message, tipo = ex.GetType().Name, inner = ex.InnerException?.Message }
+                : (object)new { error = "Error interno del servidor." });
         }
     }
 
