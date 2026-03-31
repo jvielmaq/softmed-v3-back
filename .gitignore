@@ -1,0 +1,34 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Secrets / environment
+secrets.json
+appsettings.Development.json
+*.env
+.env
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+packages/
+.nuget/
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# AWS Lambda publish artifacts
+publish/

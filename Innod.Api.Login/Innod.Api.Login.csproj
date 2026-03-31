@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Softmed.V3.Login</RootNamespace>
+    <AssemblyName>Innod.Api.Login</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Innod.Api.Common\Innod.Api.Common.csproj" />
+    <ProjectReference Include="..\Innod.Api.Login.Business\Innod.Api.Login.Business.csproj" />
+  </ItemGroup>
+
+</Project>

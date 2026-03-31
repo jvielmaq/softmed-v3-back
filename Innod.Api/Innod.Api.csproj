@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Softmed.V3</RootNamespace>
+    <AssemblyName>Innod.Api</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core"                            Version="2.2.0" />
+    <PackageReference Include="Amazon.Lambda.APIGatewayEvents"                Version="2.7.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson"    Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Innod.Api.Common\Innod.Api.Common.csproj" />
+    <ProjectReference Include="..\Innod.Api.Login\Innod.Api.Login.csproj" />
+    <ProjectReference Include="..\Innod.Api.Core\Innod.Api.Core.csproj" />
+    <ProjectReference Include="..\Innod.Api.Softmed\Innod.Api.Softmed.csproj" />
+  </ItemGroup>
+
+</Project>

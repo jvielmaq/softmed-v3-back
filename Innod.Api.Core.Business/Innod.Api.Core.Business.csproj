@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Softmed.V3.Core.Business</RootNamespace>
+    <AssemblyName>Innod.Api.Core.Business</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper"          Version="2.0.151" />
+    <PackageReference Include="MySqlConnector"  Version="2.3.7"   />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Innod.Api.Common\Innod.Api.Common.csproj" />
+  </ItemGroup>
+
+</Project>
