@@ -32,7 +32,7 @@ public sealed class Conexion
             $"Database={database};" +
             $"User ID={user};" +
             $"Password={password};" +
-            "SslMode=Required;" +
+            "SslMode=None;" +
             "Pooling=true;" +
             "MaximumPoolSize=10;";
     }
