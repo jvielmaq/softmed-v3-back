@@ -36,9 +36,23 @@ public class Function
         try
         {
             // ── 1. Parsear body ───────────────────────────────────────────────
-            solicitud = JsonSerializer.Deserialize<Solicitud>(
-                            request.Body ?? "{}",
-                            _jsonOptions);
+            var body = request.Body ?? string.Empty;
+            solicitud = new Solicitud();
+            foreach (var pair in body.Split('&'))
+            {
+                var parts = pair.Split('=', 2);
+                if (parts.Length != 2) continue;
+                var key = Uri.UnescapeDataString(parts[0].Trim());
+                var val = Uri.UnescapeDataString(parts[1].Trim());
+                switch (key.ToUpper())
+                {
+                    case "MODULE": solicitud.MODULE = val; break;
+                    case "ACTION": solicitud.ACTION = val; break;
+                    case "TARGET": solicitud.TARGET = val; break;
+                    case "TOKEN":  solicitud.Token  = val; break;
+                    case "DATA":   solicitud.Data   = val; break;
+                }
+            }
 
             if (solicitud is null || string.IsNullOrWhiteSpace(solicitud.MODULE))
                 return BuildResponse(400, new { error = "Solicitud inválida o MODULE ausente." });
