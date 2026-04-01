@@ -1,0 +1,127 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-x64": {
+      "Innod.Api.Barcode.Business/1.0.0": {
+        "dependencies": {
+          "Barcoder": "1.0.0.86",
+          "Barcoder.Renderer.Svg": "1.0.0.86",
+          "Pdf417EncoderLibrary": "2.1.0",
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "Innod.Api.Barcode.Business.dll": {}
+        }
+      },
+      "Barcoder/1.0.0.86": {
+        "runtime": {
+          "lib/netstandard2.0/Barcoder.dll": {
+            "assemblyVersion": "1.0.0.86",
+            "fileVersion": "1.0.0.86"
+          }
+        }
+      },
+      "Barcoder.Renderer.Svg/1.0.0.86": {
+        "dependencies": {
+          "Barcoder": "1.0.0.86",
+          "SvgLib": "1.0.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Barcoder.Renderer.Svg.dll": {
+            "assemblyVersion": "1.0.0.86",
+            "fileVersion": "1.0.0.86"
+          }
+        }
+      },
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "Pdf417EncoderLibrary/2.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Pdf417EncoderLibrary.dll": {
+            "assemblyVersion": "2.11.0.0",
+            "fileVersion": "2.11.0.0"
+          }
+        }
+      },
+      "SvgLib/1.0.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/SvgLib.dll": {
+            "assemblyVersion": "1.0.0.1",
+            "fileVersion": "1.0.0.1"
+          }
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "runtime": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Innod.Api.Barcode.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Barcoder/1.0.0.86": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FUACTgEIVJO4vHDUaEAd8uQ3enjIlwjL9777a8zy4GuFkS/X2LVVqnALl0xML4zMIJySF15Cn2gi22XqTbWINQ==",
+      "path": "barcoder/1.0.0.86",
+      "hashPath": "barcoder.1.0.0.86.nupkg.sha512"
+    },
+    "Barcoder.Renderer.Svg/1.0.0.86": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eKPz/dLY/M6A5gN/cCjs3ITjybkREU43Fz+GIxtqTj7YgrU2vH6dZOeujBC9+EIO+Ek1OvddDc2xbj/Rj0tk5g==",
+      "path": "barcoder.renderer.svg/1.0.0.86",
+      "hashPath": "barcoder.renderer.svg.1.0.0.86.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "Pdf417EncoderLibrary/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ALrP7wjrPt7csiJA1a9+HSWDARNx1sWqdeUBmUBXaR5PzGt0VucCIMgxYSi6Hnb7ok88YDKltd4qVuzKoytwNg==",
+      "path": "pdf417encoderlibrary/2.1.0",
+      "hashPath": "pdf417encoderlibrary.2.1.0.nupkg.sha512"
+    },
+    "SvgLib/1.0.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-P0yTxzKvkdfAulrVeUJ3gQr1nOXzEuF5BSUWLvCKzQwWL49xOmCYykM+y9KjSW1bpC6fSFsyF1YP/rStGKIUSQ==",
+      "path": "svglib/1.0.0.1",
+      "hashPath": "svglib.1.0.0.1.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "path": "system.drawing.common/5.0.2",
+      "hashPath": "system.drawing.common.5.0.2.nupkg.sha512"
+    }
+  }
+}

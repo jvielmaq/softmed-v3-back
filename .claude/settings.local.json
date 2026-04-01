@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh:*)",
+      "Bash(powershell -Command \"aws ec2 stop-instances --instance-ids i-010fd7ece8d1670ca --region sa-east-1 --profile aws-softmedDev --output text --query 'StoppingInstances[0].CurrentState.Name'\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$result = aws ec2 describe-instance-attribute --instance-id i-010fd7ece8d1670ca --attribute userData --region sa-east-1 --profile aws-softmedDev --output json | ConvertFrom-Json\n\\\\$b64 = \\\\$result.UserData.Value\nif \\(\\\\$b64\\) {\n    \\\\$decoded = [System.Text.Encoding]::UTF8.GetString\\([System.Convert]::FromBase64String\\(\\\\$b64\\)\\)\n    Write-Host \\\\$decoded\n} else { Write-Host 'Sin userData' }\n\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$pk = Get-Content \\\\\"\\\\$env:USERPROFILE\\\\.ssh\\\\temp-ec2-key.pub\\\\\" -Raw\naws ec2-instance-connect send-serial-console-ssh-public-key --instance-id i-010fd7ece8d1670ca --serial-port 0 --ssh-public-key \\\\$pk --region sa-east-1 --profile aws-softmedDev 2>&1\n\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$json = '{\\\\\"body\\\\\":\\\\\"MODULE=LOGIN&ACTION=AUTENTICAR&Data={\\\\\\\\\\\\\"email\\\\\\\\\\\\\":\\\\\\\\\\\\\"admin@softmed-v3.cl\\\\\\\\\\\\\",\\\\\\\\\\\\\"password\\\\\\\\\\\\\":\\\\\\\\\\\\\"Admin.1234!\\\\\\\\\\\\\"}\\\\\",\\\\\"httpMethod\\\\\":\\\\\"POST\\\\\",\\\\\"requestContext\\\\\":{\\\\\"identity\\\\\":{\\\\\"sourceIp\\\\\":\\\\\"127.0.0.1\\\\\"}}}'\n[System.IO.File]::WriteAllText\\(\\\\\"\\\\$env:USERPROFILE\\\\test-login.json\\\\\", \\\\$json, [System.Text.Encoding]::ASCII\\)\naws lambda invoke --function-name softmed-v3-dev-api --region sa-east-1 --profile aws-softmedDev --payload file://\\\\$env:USERPROFILE/test-login.json --cli-binary-format raw-in-base64-out \\\\$env:USERPROFILE\\\\test-response.json 2>&1\nGet-Content \\\\$env:USERPROFILE\\\\test-response.json\n\" 2>&1)",
+      "Bash(powershell -Command \"aws ec2 describe-network-acls --filters 'Name=vpc-id,Values=vpc-06b64e957175df5b0' --region sa-east-1 --profile aws-softmedDev --output json\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$streams = aws logs describe-log-streams --log-group-name '/aws/lambda/softmed-v3-dev-api' --region sa-east-1 --profile aws-softmedDev --order-by LastEventTime --descending --max-items 1 --output json | ConvertFrom-Json\n\\\\$stream = \\\\$streams.logStreams[0].logStreamName\nWrite-Host \\\\\"Stream: \\\\$stream\\\\\"\naws logs get-log-events --log-group-name '/aws/lambda/softmed-v3-dev-api' --log-stream-name \\\\$stream --region sa-east-1 --profile aws-softmedDev --output json | ConvertFrom-Json | Select-Object -ExpandProperty events | ForEach-Object { \\\\$_.message }\n\" 2>&1)",
+      "Bash(powershell -Command \"aws ec2 describe-instances --instance-ids i-010fd7ece8d1670ca --region sa-east-1 --profile aws-softmedDev --query 'Reservations[0].Instances[0].[PrivateIpAddress,PublicIpAddress]' --output text\" 2>&1)",
+      "Bash(powershell -Command \"aws ec2 describe-network-interfaces --filters 'Name=description,Values=AWS Lambda VPC ENI*' 'Name=vpc-id,Values=vpc-06b64e957175df5b0' --region sa-east-1 --profile aws-softmedDev --query 'NetworkInterfaces[].[NetworkInterfaceId,SubnetId,PrivateIpAddress,Status]' --output table\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$tcp = New-Object System.Net.Sockets.TcpClient\n\\\\$r = \\\\$tcp.BeginConnect\\('15.229.238.50', 3306, \\\\$null, \\\\$null\\)\n\\\\$ok = \\\\$r.AsyncWaitHandle.WaitOne\\(6000, \\\\$false\\)\nif \\(\\\\$ok -and \\\\$tcp.Connected\\) { Write-Host '3306 ABIERTO' } else { Write-Host '3306 CERRADO' }\n\\\\$tcp.Close\\(\\)\n\" 2>&1)",
+      "Bash(powershell -Command \"\n\\\\$pk = Get-Content \\\\\"\\\\$env:USERPROFILE\\\\.ssh\\\\temp-ec2-key.pub\\\\\" -Raw\naws ec2-instance-connect send-ssh-public-key --instance-id i-010fd7ece8d1670ca --instance-os-user ubuntu --ssh-public-key \\\\$pk --region sa-east-1 --profile aws-softmedDev | Out-Null\nWrite-Host 'Key enviada'\n\" 2>&1)",
+      "Bash(powershell -Command \"aws ec2 describe-instances --instance-ids i-010fd7ece8d1670ca --region sa-east-1 --profile aws-softmedDev --query 'Reservations[0].Instances[0].IamInstanceProfile' --output json\" 2>&1)",
+      "Bash(dotnet build:*)",
+      "Bash(cmd.exe /c \"dotnet build --no-restore 2>&1\")",
+      "Bash(cmd.exe /c \"cd /d \\\\\"C:\\\\Users\\\\jviel\\\\OneDrive - Nexgen Software\\\\softmed-v3-back\\\\\" && dotnet build --no-restore\")",
+      "Bash(\"/mnt/c/Program Files/dotnet/dotnet.exe\" build --no-restore \"C:\\\\Users\\\\jviel\\\\OneDrive - Nexgen Software\\\\softmed-v3-back\")",
+      "Bash(powershell.exe -Command \"cd ''C:\\\\Users\\\\jviel\\\\OneDrive - Nexgen Software\\\\softmed-v3-back''; dotnet build --no-restore\")",
+      "Bash(powershell.exe -Command \"Get-Command dotnet -ErrorAction SilentlyContinue | Select-Object Source; where.exe dotnet 2>&1\")",
+      "Bash(python3:*)",
+      "Bash(dotnet-script:*)",
+      "Bash(node:*)"
+    ]
+  }
+}

@@ -16,23 +16,23 @@ public static class RepoLogin
 
         cmd.CommandText = @"
             SELECT
-                u.id_usuario,
-                p.nombres,
-                p.apellidos,
-                u.email,
-                u.clave,
-                u.`key`,
-                r.nombre_rol,
-                u.activo,
-                u.id_institucion,
-                COALESCE(t.id_tenant, 0) AS id_tenant
-            FROM       TBL_USUARIO     u
-            INNER JOIN TBL_PERSONA     p  ON p.id_persona     = u.id_persona
-            INNER JOIN TBL_ROL         r  ON r.id_rol         = u.id_rol
-            LEFT  JOIN TBL_EMPLEADO    e  ON e.id_persona     = p.id_persona
-            INNER JOIN TBL_INSTITUCION i  ON i.id_institucion = u.id_institucion
-            LEFT  JOIN TBL_TENANT      t  ON t.id_institucion = i.id_institucion
-            WHERE u.email = @email
+                u.USUAR_CDG_ID                          AS id_usuario,
+                p.PERSO_CAR_NOMBRES                     AS nombres,
+                p.PERSO_CAR_APELLIDOS                   AS apellidos,
+                u.USUAR_CAR_EMAIL                       AS email,
+                u.USUAR_CAR_CLAVE                       AS clave,
+                u.USUAR_CAR_KEY                         AS `key`,
+                r.ROL_CAR_NOMBRE                        AS nombre_rol,
+                u.USUAR_BOO_ACTIVO                      AS activo,
+                COALESCE(e.TBL_INSTITUCION_INSTI_CDG_ID, 0) AS id_institucion,
+                COALESCE(t.TENAN_CDG_ID, 0)             AS id_tenant
+            FROM       TBL_USUARIO      u
+            INNER JOIN TBL_PERSONA      p  ON p.PERSO_CDG_ID                = u.TBL_PERSONA_PERSO_CDG_ID
+            INNER JOIN TBL_ROL          r  ON r.ROL_CDG_ID                  = u.TBL_ROL_ROL_CDG_ID
+            LEFT  JOIN TBL_EMPLEADO     e  ON e.TBL_PERSONA_PERSO_CDG_ID    = p.PERSO_CDG_ID
+            LEFT  JOIN TBL_INSTITUCION  i  ON i.INSTI_CDG_ID                = e.TBL_INSTITUCION_INSTI_CDG_ID
+            LEFT  JOIN TBL_TENANT       t  ON t.TENAN_CDG_ID                = (SELECT FEATU_CDG_TENANT FROM TBL_FEATURE_FLAG WHERE FEATU_BOO_ACTIVO = 1 LIMIT 1)
+            WHERE u.USUAR_CAR_EMAIL = @email
             LIMIT 1";
 
         cmd.Parameters.AddWithValue("@email", email);

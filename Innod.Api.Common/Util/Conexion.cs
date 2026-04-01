@@ -16,25 +16,24 @@ public sealed class Conexion
 
     private Conexion()
     {
-        var host     = Environment.GetEnvironmentVariable("DB_HOST")
-                       ?? throw new InvalidOperationException("Variable de entorno DB_HOST no definida.");
-        var port     = Environment.GetEnvironmentVariable("DB_PORT") ?? "3306";
-        var database = Environment.GetEnvironmentVariable("DB_NAME")
-                       ?? throw new InvalidOperationException("Variable de entorno DB_NAME no definida.");
-        var user     = Environment.GetEnvironmentVariable("DB_USER")
-                       ?? throw new InvalidOperationException("Variable de entorno DB_USER no definida.");
-        var password = Environment.GetEnvironmentVariable("DB_PASSWORD")
-                       ?? throw new InvalidOperationException("Variable de entorno DB_PASSWORD no definida.");
+        var builder = new MySqlConnectionStringBuilder
+        {
+            Server = Environment.GetEnvironmentVariable("DB_HOST")
+                     ?? throw new InvalidOperationException("Variable de entorno DB_HOST no definida."),
+            Port = uint.Parse(Environment.GetEnvironmentVariable("DB_PORT") ?? "3306"),
+            Database = Environment.GetEnvironmentVariable("DB_NAME")
+                       ?? throw new InvalidOperationException("Variable de entorno DB_NAME no definida."),
+            UserID = Environment.GetEnvironmentVariable("DB_USER")
+                     ?? throw new InvalidOperationException("Variable de entorno DB_USER no definida."),
+            Password = Environment.GetEnvironmentVariable("DB_PASSWORD")
+                       ?? throw new InvalidOperationException("Variable de entorno DB_PASSWORD no definida."),
+            SslMode = MySqlSslMode.None,
+            AllowPublicKeyRetrieval = true,
+            Pooling = true,
+            MaximumPoolSize = 10
+        };
 
-        _connectionString =
-            $"Server={host};" +
-            $"Port={port};" +
-            $"Database={database};" +
-            $"User ID={user};" +
-            $"Password={password};" +
-            "SslMode=None;" +
-            "Pooling=true;" +
-            "MaximumPoolSize=10;";
+        _connectionString = builder.ConnectionString;
     }
 
     /// <summary>Instancia singleton (double-check lock).</summary>

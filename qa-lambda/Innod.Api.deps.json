@@ -1,0 +1,1516 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-x64": {
+      "Innod.Api/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5",
+          "AWSSDK.Lambda": "3.7.411.28",
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Amazon.Lambda.Core": "2.5.0",
+          "Amazon.Lambda.Serialization.Json": "2.2.4",
+          "Innod.Api.Barcode": "1.0.0",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Comprehend": "1.0.0",
+          "Innod.Api.Core": "1.0.0",
+          "Innod.Api.Login": "1.0.0",
+          "Innod.Api.Polly": "1.0.0",
+          "Innod.Api.QR": "1.0.0",
+          "Innod.Api.Softmed": "1.0.0",
+          "Innod.Api.Test": "1.0.0",
+          "Innod.Api.Transcribe": "1.0.0",
+          "Innod.Api.Translate": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.dll": {}
+        }
+      },
+      "Amazon.Lambda.APIGatewayEvents/2.7.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/Amazon.Lambda.APIGatewayEvents.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
+      "Amazon.Lambda.Core/2.5.0": {
+        "runtime": {
+          "lib/net6.0/Amazon.Lambda.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Amazon.Lambda.Serialization.Json/2.2.4": {
+        "dependencies": {
+          "Amazon.Lambda.Core": "2.5.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Amazon.Lambda.Serialization.Json.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
+      "Amazon.Lambda.Serialization.SystemTextJson/2.4.4": {
+        "dependencies": {
+          "Amazon.Lambda.Core": "2.5.0"
+        },
+        "runtime": {
+          "lib/net6.0/Amazon.Lambda.Serialization.SystemTextJson.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "AWSSDK.Comprehend/3.7.1.12": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Comprehend.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.1.12"
+          }
+        }
+      },
+      "AWSSDK.Core/3.7.401.5": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.401.5"
+          }
+        }
+      },
+      "AWSSDK.Lambda/3.7.411.28": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Lambda.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.411.28"
+          }
+        }
+      },
+      "AWSSDK.Polly/3.7.0.16": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Polly.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.16"
+          }
+        }
+      },
+      "AWSSDK.S3/3.7.0.18": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.S3.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.18"
+          }
+        }
+      },
+      "AWSSDK.SimpleEmail/3.7.0.16": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SimpleEmail.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.16"
+          }
+        }
+      },
+      "AWSSDK.TranscribeService/3.7.2.12": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.TranscribeService.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.2.12"
+          }
+        }
+      },
+      "AWSSDK.Translate/3.7.0.16": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Translate.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.16"
+          }
+        }
+      },
+      "Barcoder/1.0.0.86": {
+        "runtime": {
+          "lib/netstandard2.0/Barcoder.dll": {
+            "assemblyVersion": "1.0.0.86",
+            "fileVersion": "1.0.0.86"
+          }
+        }
+      },
+      "Barcoder.Renderer.Svg/1.0.0.86": {
+        "dependencies": {
+          "Barcoder": "1.0.0.86",
+          "SvgLib": "1.0.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Barcoder.Renderer.Svg.dll": {
+            "assemblyVersion": "1.0.0.86",
+            "fileVersion": "1.0.0.86"
+          }
+        }
+      },
+      "BouncyCastle.Cryptography/2.2.1": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.2.1.47552"
+          }
+        }
+      },
+      "Dapper/2.0.90": {
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.90.36046"
+          }
+        }
+      },
+      "Google.Protobuf/3.25.1": {
+        "runtime": {
+          "lib/net5.0/Google.Protobuf.dll": {
+            "assemblyVersion": "3.25.1.0",
+            "fileVersion": "3.25.1.0"
+          }
+        }
+      },
+      "iTextSharp/5.5.13.2": {
+        "runtime": {
+          "lib/itextsharp.dll": {
+            "assemblyVersion": "5.5.13.2",
+            "fileVersion": "5.5.13.2"
+          }
+        }
+      },
+      "K4os.Compression.LZ4/1.3.5": {
+        "runtime": {
+          "lib/net6.0/K4os.Compression.LZ4.dll": {
+            "assemblyVersion": "1.3.5.0",
+            "fileVersion": "1.3.5.0"
+          }
+        }
+      },
+      "K4os.Compression.LZ4.Streams/1.3.5": {
+        "dependencies": {
+          "K4os.Compression.LZ4": "1.3.5",
+          "K4os.Hash.xxHash": "1.0.8",
+          "System.IO.Pipelines": "6.0.3"
+        },
+        "runtime": {
+          "lib/net6.0/K4os.Compression.LZ4.Streams.dll": {
+            "assemblyVersion": "1.3.5.0",
+            "fileVersion": "1.3.5.0"
+          }
+        }
+      },
+      "K4os.Hash.xxHash/1.0.8": {
+        "runtime": {
+          "lib/net6.0/K4os.Hash.xxHash.dll": {
+            "assemblyVersion": "1.0.8.0",
+            "fileVersion": "1.0.8.0"
+          }
+        }
+      },
+      "Magick.NET-Q16-AnyCPU/7.23.4": {
+        "dependencies": {
+          "Magick.NET.Core": "6.2.0"
+        },
+        "runtime": {
+          "lib/netstandard20/Magick.NET-Q16-AnyCPU.dll": {
+            "assemblyVersion": "7.23.4.0",
+            "fileVersion": "7.23.4.0"
+          }
+        },
+        "native": {
+          "runtimes/linux-x64/native/Magick.Native-Q16-x64.dll.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/Notice.txt": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Magick.NET.Core/6.2.0": {
+        "runtime": {
+          "lib/netstandard20/Magick.NET.Core.dll": {
+            "assemblyVersion": "6.2.0.0",
+            "fileVersion": "6.2.0.0"
+          }
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Http/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Logging": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Http.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Logging.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Options/8.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
+          "Microsoft.Extensions.Primitives": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Options.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.Extensions.Primitives/8.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.JsonWebTokens/6.11.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "6.11.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.JsonWebTokens.dll": {
+            "assemblyVersion": "6.11.0.0",
+            "fileVersion": "6.11.0.20426"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/6.11.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {
+            "assemblyVersion": "6.11.0.0",
+            "fileVersion": "6.11.0.20426"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/6.11.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "6.11.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {
+            "assemblyVersion": "6.11.0.0",
+            "fileVersion": "6.11.0.20426"
+          }
+        }
+      },
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
+      "MimeKit/2.11.0": {
+        "dependencies": {
+          "Portable.BouncyCastle": "1.8.10",
+          "System.Security.Cryptography.Pkcs": "4.7.0"
+        },
+        "runtime": {
+          "lib/net50/MimeKit.dll": {
+            "assemblyVersion": "2.11.0.0",
+            "fileVersion": "2.11.0.0"
+          }
+        }
+      },
+      "MySql.Data/8.4.0": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.2.1",
+          "Google.Protobuf": "3.25.1",
+          "K4os.Compression.LZ4.Streams": "1.3.5",
+          "System.Configuration.ConfigurationManager": "4.4.1",
+          "System.Diagnostics.DiagnosticSource": "7.0.2",
+          "System.Security.Permissions": "4.7.0",
+          "System.Text.Json": "7.0.1",
+          "ZstdSharp.Port": "0.7.1"
+        },
+        "runtime": {
+          "lib/net6.0/MySql.Data.dll": {
+            "assemblyVersion": "8.4.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      },
+      "Nito.AsyncEx/5.1.0": {
+        "dependencies": {
+          "Nito.AsyncEx.Context": "5.1.0",
+          "Nito.AsyncEx.Coordination": "5.1.0",
+          "Nito.AsyncEx.Interop.WaitHandles": "5.1.0",
+          "Nito.AsyncEx.Oop": "5.1.0",
+          "Nito.AsyncEx.Tasks": "5.1.0",
+          "Nito.Cancellation": "1.1.0"
+        }
+      },
+      "Nito.AsyncEx.Context/5.1.0": {
+        "dependencies": {
+          "Nito.AsyncEx.Tasks": "5.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.AsyncEx.Context.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        }
+      },
+      "Nito.AsyncEx.Coordination/5.1.0": {
+        "dependencies": {
+          "Nito.AsyncEx.Tasks": "5.1.0",
+          "Nito.Collections.Deque": "1.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.AsyncEx.Coordination.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        }
+      },
+      "Nito.AsyncEx.Interop.WaitHandles/5.1.0": {
+        "dependencies": {
+          "Nito.AsyncEx.Tasks": "5.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.AsyncEx.Interop.WaitHandles.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        }
+      },
+      "Nito.AsyncEx.Oop/5.1.0": {
+        "dependencies": {
+          "Nito.AsyncEx.Coordination": "5.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.AsyncEx.Oop.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        }
+      },
+      "Nito.AsyncEx.Tasks/5.1.0": {
+        "dependencies": {
+          "Nito.Disposables": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.AsyncEx.Tasks.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.0"
+          }
+        }
+      },
+      "Nito.Cancellation/1.1.0": {
+        "dependencies": {
+          "Nito.Disposables": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nito.Cancellation.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "Nito.Collections.Deque/1.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Nito.Collections.Deque.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "Nito.Disposables/2.2.0": {
+        "runtime": {
+          "lib/netstandard2.1/Nito.Disposables.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.0"
+          }
+        }
+      },
+      "Pdf417EncoderLibrary/2.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/Pdf417EncoderLibrary.dll": {
+            "assemblyVersion": "2.11.0.0",
+            "fileVersion": "2.11.0.0"
+          }
+        }
+      },
+      "Portable.BouncyCastle/1.8.10": {
+        "runtime": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
+            "assemblyVersion": "1.8.10.0",
+            "fileVersion": "1.8.10.1"
+          }
+        }
+      },
+      "QRCoder/1.4.1": {
+        "dependencies": {
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/QRCoder.dll": {
+            "assemblyVersion": "1.4.1.0",
+            "fileVersion": "1.4.1.0"
+          }
+        }
+      },
+      "SixLabors.ImageSharp/1.0.3": {
+        "runtime": {
+          "lib/netcoreapp3.1/SixLabors.ImageSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.3.0"
+          }
+        }
+      },
+      "SvgLib/1.0.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/SvgLib.dll": {
+            "assemblyVersion": "1.0.0.1",
+            "fileVersion": "1.0.0.1"
+          }
+        }
+      },
+      "System.Configuration.ConfigurationManager/4.4.1": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.6.25921.2"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/7.0.2": {
+        "runtime": {
+          "lib/net6.0/System.Diagnostics.DiagnosticSource.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.423.11508"
+          }
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "runtime": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        }
+      },
+      "System.IdentityModel.Tokens.Jwt/6.11.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.JsonWebTokens": "6.11.0",
+          "Microsoft.IdentityModel.Tokens": "6.11.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.IdentityModel.Tokens.Jwt.dll": {
+            "assemblyVersion": "6.11.0.0",
+            "fileVersion": "6.11.0.20426"
+          }
+        }
+      },
+      "System.IO.Pipelines/6.0.3": {
+        "runtime": {
+          "lib/net6.0/System.IO.Pipelines.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.522.21309"
+          }
+        }
+      },
+      "System.Security.Cryptography.Pkcs/4.7.0": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.Security.Cryptography.Pkcs.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/4.4.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.25519.3"
+          }
+        }
+      },
+      "System.Security.Permissions/4.7.0": {
+        "dependencies": {
+          "System.Windows.Extensions": "4.7.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Security.Permissions.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "System.Text.Encodings.Web/7.0.0": {
+        "runtime": {
+          "lib/net6.0/System.Text.Encodings.Web.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "System.Text.Json/7.0.1": {
+        "dependencies": {
+          "System.Text.Encodings.Web": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Json.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.122.56804"
+          }
+        }
+      },
+      "System.Windows.Extensions/4.7.0": {
+        "dependencies": {
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Windows.Extensions.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.700.19.56404"
+          }
+        }
+      },
+      "ZstdSharp.Port/0.7.1": {
+        "runtime": {
+          "lib/net6.0/ZstdSharp.dll": {
+            "assemblyVersion": "0.7.1.0",
+            "fileVersion": "0.7.1.0"
+          }
+        }
+      },
+      "Innod.Api.Barcode/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Barcode.Business": "1.0.0",
+          "Innod.Api.Common": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Barcode.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Barcode.Business/1.0.0": {
+        "dependencies": {
+          "Barcoder": "1.0.0.86",
+          "Barcoder.Renderer.Svg": "1.0.0.86",
+          "Pdf417EncoderLibrary": "2.1.0",
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "Innod.Api.Barcode.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Common/1.0.0": {
+        "dependencies": {
+          "AWSSDK.S3": "3.7.0.18",
+          "AWSSDK.SimpleEmail": "3.7.0.16",
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Amazon.Lambda.Core": "2.5.0",
+          "Dapper": "2.0.90",
+          "Microsoft.IdentityModel.Tokens": "6.11.0",
+          "MimeKit": "2.11.0",
+          "MySql.Data": "8.4.0",
+          "Newtonsoft.Json": "13.0.1",
+          "Nito.AsyncEx": "5.1.0",
+          "System.IdentityModel.Tokens.Jwt": "6.11.0"
+        },
+        "runtime": {
+          "Innod.Api.Common.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Comprehend/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Comprehend": "3.7.1.12",
+          "Innod.Api.Common": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.Comprehend.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Core/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Core.Business": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Core.Business/1.0.0": {
+        "dependencies": {
+          "Innod.Api.Common": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.Core.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Login/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Login.Business": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Login.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Login.Business/1.0.0": {
+        "dependencies": {
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Core": "1.0.0",
+          "Innod.Api.Core.Business": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.Login.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Polly/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Polly": "3.7.0.16",
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Polly.Business": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Polly.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Polly.Business/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Polly": "3.7.0.16",
+          "Innod.Api.Common": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.Polly.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.QR/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.QR.Business": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.QR.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.QR.Business/1.0.0": {
+        "dependencies": {
+          "Magick.NET-Q16-AnyCPU": "7.23.4",
+          "Newtonsoft.Json": "13.0.1",
+          "QRCoder": "1.4.1",
+          "SixLabors.ImageSharp": "1.0.3",
+          "System.Drawing.Common": "5.0.2"
+        },
+        "runtime": {
+          "Innod.Api.QR.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Softmed/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Core.Business": "1.0.0",
+          "Innod.Api.Softmed.Business": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Softmed.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Softmed.Business/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.401.5",
+          "AWSSDK.Lambda": "3.7.411.28",
+          "Amazon.Lambda.Core": "2.5.0",
+          "Amazon.Lambda.Serialization.SystemTextJson": "2.4.4",
+          "Innod.Api.Barcode.Business": "1.0.0",
+          "Innod.Api.Core.Business": "1.0.0",
+          "Innod.Api.Transcribe.Business": "1.0.0",
+          "Microsoft.Extensions.Http": "8.0.0",
+          "iTextSharp": "5.5.13.2"
+        },
+        "runtime": {
+          "Innod.Api.Softmed.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Test/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Test.Business": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Test.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Test.Business/1.0.0": {
+        "dependencies": {
+          "Innod.Api.Core.Business": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "8.0.0",
+          "Microsoft.Extensions.Http": "8.0.0"
+        },
+        "runtime": {
+          "Innod.Api.Test.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Transcribe/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Transcribe.Business": "1.0.0"
+        },
+        "runtime": {
+          "Innod.Api.Transcribe.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Transcribe.Business/1.0.0": {
+        "dependencies": {
+          "AWSSDK.TranscribeService": "3.7.2.12"
+        },
+        "runtime": {
+          "Innod.Api.Transcribe.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Translate/1.0.0": {
+        "dependencies": {
+          "Amazon.Lambda.APIGatewayEvents": "2.7.1",
+          "Innod.Api.Common": "1.0.0",
+          "Innod.Api.Translate.Business": "1.0.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "Innod.Api.Translate.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Innod.Api.Translate.Business/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Translate": "3.7.0.16"
+        },
+        "runtime": {
+          "Innod.Api.Translate.Business.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Innod.Api/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Amazon.Lambda.APIGatewayEvents/2.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ORuKOBjquor/clDL5ogeUoKEHt/iRmaC673gFpNzpwF5VkJ7LRvQc4MYnkeIexnXEwdS7yTkM4eSu9wzORi/wg==",
+      "path": "amazon.lambda.apigatewayevents/2.7.1",
+      "hashPath": "amazon.lambda.apigatewayevents.2.7.1.nupkg.sha512"
+    },
+    "Amazon.Lambda.Core/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JrDdnjUPFcZ74VDjVc2kMucyUpjHnN77Al9Owc17DYYFYAVav46fLRl1BlJj0UPhJxTakoB/h1PhU/6J005Qrw==",
+      "path": "amazon.lambda.core/2.5.0",
+      "hashPath": "amazon.lambda.core.2.5.0.nupkg.sha512"
+    },
+    "Amazon.Lambda.Serialization.Json/2.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xeOfdXmdxSTNKtv0ZMnd6PejmjgxHV3NLJNTARUI+Z2mcJ5eBHsT6vp3bhlXrvBYKt2zbF7+Q2EfQ0RtNJjQUQ==",
+      "path": "amazon.lambda.serialization.json/2.2.4",
+      "hashPath": "amazon.lambda.serialization.json.2.2.4.nupkg.sha512"
+    },
+    "Amazon.Lambda.Serialization.SystemTextJson/2.4.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iv/cvqFuZ3v3+NFDyof0IJZvU+4kdpzOe3pWSBwp9HB885I+D32WQxuid9V4GnvRynER9XnWMPaDmImX8qH5cA==",
+      "path": "amazon.lambda.serialization.systemtextjson/2.4.4",
+      "hashPath": "amazon.lambda.serialization.systemtextjson.2.4.4.nupkg.sha512"
+    },
+    "AWSSDK.Comprehend/3.7.1.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yc0o7envH/hJ4XT/JgLyE/NgOcnks6w0IX9NmCphGKlV9NcZHxwCyMpWhx1Fgp3oxOjSRXT8bphgBiHigE98IA==",
+      "path": "awssdk.comprehend/3.7.1.12",
+      "hashPath": "awssdk.comprehend.3.7.1.12.nupkg.sha512"
+    },
+    "AWSSDK.Core/3.7.401.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IbGtR6nDAD722yjGqfMnEc8x7DNOY1QXpSbbKDKe6Tw4LJc2GtovNRa0WKgiCg55volMLW02EtWP+4LcatQUmg==",
+      "path": "awssdk.core/3.7.401.5",
+      "hashPath": "awssdk.core.3.7.401.5.nupkg.sha512"
+    },
+    "AWSSDK.Lambda/3.7.411.28": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Vtc6tNu3pRxkxShQ6/OHGfb5/mF9EJ26NTSGsRGymkRqOmvm31tCg/J9IUeY8tvc312joOZtfCqzCMrJ2tSI+Q==",
+      "path": "awssdk.lambda/3.7.411.28",
+      "hashPath": "awssdk.lambda.3.7.411.28.nupkg.sha512"
+    },
+    "AWSSDK.Polly/3.7.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3ReCLfybBHnhbNTBSmurEecATtwYBKnguSvAt64SJx+W6gZm/mmY945yOenDeh1ZR8nHQt8TyOO4iltyMn4h5A==",
+      "path": "awssdk.polly/3.7.0.16",
+      "hashPath": "awssdk.polly.3.7.0.16.nupkg.sha512"
+    },
+    "AWSSDK.S3/3.7.0.18": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PmpcLK0kLn0mkRUr/oDfn9DTAtoP1PaWr6eHNfUMSwhAl5o4/Rq8/2S7kJj7ZxX7ZyvwHIJwYV3S/+isGjGE4A==",
+      "path": "awssdk.s3/3.7.0.18",
+      "hashPath": "awssdk.s3.3.7.0.18.nupkg.sha512"
+    },
+    "AWSSDK.SimpleEmail/3.7.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0rYlgh1n8tCctpuIJkHQZg11YAT1VfmjORjlQLQmlKOSyokkuejeJipiV6pafYt13LDz3NwDVN732L90c/u18w==",
+      "path": "awssdk.simpleemail/3.7.0.16",
+      "hashPath": "awssdk.simpleemail.3.7.0.16.nupkg.sha512"
+    },
+    "AWSSDK.TranscribeService/3.7.2.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o6ylnjNj9O9D/3R1Bo/YX/+Wcjlxc7sP85PN8HcIEGKlq2aL6Tki6MIXmk/6FhVUsJSGZA+SbqF2SuM8shaGog==",
+      "path": "awssdk.transcribeservice/3.7.2.12",
+      "hashPath": "awssdk.transcribeservice.3.7.2.12.nupkg.sha512"
+    },
+    "AWSSDK.Translate/3.7.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E7Yt6LTrRX93Vf18jPZwCw8grU6vVRGOI6fhej1SCBBe1Cd4ABzru92LjhukTcORMFp/5yRDsa+BNGrjel/qdQ==",
+      "path": "awssdk.translate/3.7.0.16",
+      "hashPath": "awssdk.translate.3.7.0.16.nupkg.sha512"
+    },
+    "Barcoder/1.0.0.86": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FUACTgEIVJO4vHDUaEAd8uQ3enjIlwjL9777a8zy4GuFkS/X2LVVqnALl0xML4zMIJySF15Cn2gi22XqTbWINQ==",
+      "path": "barcoder/1.0.0.86",
+      "hashPath": "barcoder.1.0.0.86.nupkg.sha512"
+    },
+    "Barcoder.Renderer.Svg/1.0.0.86": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eKPz/dLY/M6A5gN/cCjs3ITjybkREU43Fz+GIxtqTj7YgrU2vH6dZOeujBC9+EIO+Ek1OvddDc2xbj/Rj0tk5g==",
+      "path": "barcoder.renderer.svg/1.0.0.86",
+      "hashPath": "barcoder.renderer.svg.1.0.0.86.nupkg.sha512"
+    },
+    "BouncyCastle.Cryptography/2.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A6Zr52zVqJKt18ZBsTnX0qhG0kwIQftVAjLmszmkiR/trSp8H+xj1gUOzk7XHwaKgyREMSV1v9XaKrBUeIOdvQ==",
+      "path": "bouncycastle.cryptography/2.2.1",
+      "hashPath": "bouncycastle.cryptography.2.2.1.nupkg.sha512"
+    },
+    "Dapper/2.0.90": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e4YjOLJptnpwHIbP8HxjaYf7So9lhUC43rvvGMEkH4Q4CiVlm4rOxYDo0HyuHlMQKj0U5Ob/nCMm52TUhTaZQg==",
+      "path": "dapper/2.0.90",
+      "hashPath": "dapper.2.0.90.nupkg.sha512"
+    },
+    "Google.Protobuf/3.25.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Sw9bq4hOD+AaS3RrnmP5IT25cyZ/T1qpM0e8+G+23Nojhv7+ScJFPEAQo1m4EFQWhXoI4FRZDrK+wjHCPw9yxg==",
+      "path": "google.protobuf/3.25.1",
+      "hashPath": "google.protobuf.3.25.1.nupkg.sha512"
+    },
+    "iTextSharp/5.5.13.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8m9oT1nh9F4Z1tzWUey/8lEzZtMGFCDXQY5+8/SSmPgUWAAAWniRo8pimKUZyteNqJr5vtFBxjAhRwLxG7Q0zQ==",
+      "path": "itextsharp/5.5.13.2",
+      "hashPath": "itextsharp.5.5.13.2.nupkg.sha512"
+    },
+    "K4os.Compression.LZ4/1.3.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TS4mqlT0X1OlnvOGNfl02QdVUhuqgWuCnn7UxupIa7C9Pb6qlQ5yZA2sPhRh0OSmVULaQU64KV4wJuu//UyVQQ==",
+      "path": "k4os.compression.lz4/1.3.5",
+      "hashPath": "k4os.compression.lz4.1.3.5.nupkg.sha512"
+    },
+    "K4os.Compression.LZ4.Streams/1.3.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M0NufZI8ym3mm6F6HMSPz1jw7TJGdY74fjAtbIXATmnAva/8xLz50eQZJI9tf9mMeHUaFDg76N1BmEh8GR5zeA==",
+      "path": "k4os.compression.lz4.streams/1.3.5",
+      "hashPath": "k4os.compression.lz4.streams.1.3.5.nupkg.sha512"
+    },
+    "K4os.Hash.xxHash/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wp2F7BamQ2Q/7Hk834nV9vRQapgcr8kgv9Jvfm8J3D0IhDqZMMl+a2yxUq5ltJitvXvQfB8W6K4F4fCbw/P6YQ==",
+      "path": "k4os.hash.xxhash/1.0.8",
+      "hashPath": "k4os.hash.xxhash.1.0.8.nupkg.sha512"
+    },
+    "Magick.NET-Q16-AnyCPU/7.23.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ThjidFVmROd7V4JqGfKlxJovpbZocExPnRuI7zhXI0YUihWqUr73Kd0Xnc8tINDw/a14HMWYay33fvHj9f7QcQ==",
+      "path": "magick.net-q16-anycpu/7.23.4",
+      "hashPath": "magick.net-q16-anycpu.7.23.4.nupkg.sha512"
+    },
+    "Magick.NET.Core/6.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IMtDqxS7v3iF6gaYZeAs0hW+8VjK4YKmLzmfvq/vSxIqxi4gW1H+2Hb22qbuNmScu4rhBo4ZXPx0PvAXPUACaw==",
+      "path": "magick.net.core/6.2.0",
+      "hashPath": "magick.net.core.6.2.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3lE/iLSutpgX1CC0NOW70FJoGARRHbyKmG7dc0klnUZ9Dd9hS6N/POPWhKhMLCEuNN5nXEY5agmlFtH562vqhQ==",
+      "path": "microsoft.extensions.configuration.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V8S3bsm50ig6JSyrbcJJ8bW2b9QLGouz+G1miK3UTaOWmMtFwNNNzUf4AleyDWUmTrWMLNnFSLEQtxmxgNQnNQ==",
+      "path": "microsoft.extensions.dependencyinjection/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Http/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cWz4caHwvx0emoYe7NkHPxII/KkTI8R/LC9qdqJqnKv2poTJ4e2qqPGQqvRoQ5kaSA4FU5IV3qFAuLuOhoqULQ==",
+      "path": "microsoft.extensions.http/8.0.0",
+      "hashPath": "microsoft.extensions.http.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tvRkov9tAJ3xP51LCv3FJ2zINmv1P8Hi8lhhtcKGqM+ImiTCC84uOPEI4z8Cdq2C3o9e+Aa0Gw0rmrsJD77W+w==",
+      "path": "microsoft.extensions.logging/8.0.0",
+      "hashPath": "microsoft.extensions.logging.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Logging.Abstractions/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-arDBqTgFCyS0EvRV7O3MZturChstm50OJ0y9bDJvAcmEPJm0FFpFyjU/JLYyStNGGey081DvnQYlncNX5SJJGA==",
+      "path": "microsoft.extensions.logging.abstractions/8.0.0",
+      "hashPath": "microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Options/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JOVOfqpnqlVLUzINQ2fox8evY2SKLYJ3BV8QDe/Jyp21u1T7r45x/R/5QdteURMR5r01GxeJSBBUOCOyaNXA3g==",
+      "path": "microsoft.extensions.options/8.0.0",
+      "hashPath": "microsoft.extensions.options.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Primitives/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g==",
+      "path": "microsoft.extensions.primitives/8.0.0",
+      "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.JsonWebTokens/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qSLfRLk19E1+Gt2gdPzp5Y4YAlXi1KueXpMJpt0qug6h4PtxbnGnxFBM6bdCIJqoN75LTPztqKdpjla2NIltmA==",
+      "path": "microsoft.identitymodel.jsonwebtokens/6.11.0",
+      "hashPath": "microsoft.identitymodel.jsonwebtokens.6.11.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Logging/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-81votFg2SzidAB8frGlDV+jCCzfBWWtnKASZTddAziHuB8fT/82s1x7Kty+u01XKtKcrPdfpvbWrIUHdc/C9pw==",
+      "path": "microsoft.identitymodel.logging/6.11.0",
+      "hashPath": "microsoft.identitymodel.logging.6.11.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Tokens/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zm0aBLKCDybRQwOinG0cDXobjfcJgXIcJfB5n7gA8KHjswELcET8BiNx54j6n4VF8w6+UxUIdEtO3RMIXQZkfg==",
+      "path": "microsoft.identitymodel.tokens/6.11.0",
+      "hashPath": "microsoft.identitymodel.tokens.6.11.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "MimeKit/2.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xZGy3hLMxbw0ks82N/NjVYsW7Qb4pMEPtoJ+kcoJw566KVF2RJh2+kl0rdmzitghgf7FpxPGJmCNgIh+iciBmg==",
+      "path": "mimekit/2.11.0",
+      "hashPath": "mimekit.2.11.0.nupkg.sha512"
+    },
+    "MySql.Data/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NA273x7ybutfGwGbF2cd8rLVM5t7AkZCzRHr/+tGms1FeMlfl+LgfjHXcb5qN1QxFpeNQQKZ+vqZw8v/S8gUiA==",
+      "path": "mysql.data/8.4.0",
+      "hashPath": "mysql.data.8.4.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    },
+    "Nito.AsyncEx/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KOahZdW0fRLnoym5lGtyWpFUZ94I5s0wLgYF5RHhK8RUhXpCiEX+185qjNvkse3H9WJV2/pFfPlKZHv8Eej7Hw==",
+      "path": "nito.asyncex/5.1.0",
+      "hashPath": "nito.asyncex.5.1.0.nupkg.sha512"
+    },
+    "Nito.AsyncEx.Context/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EE7M37c5E/kvulzEkpUR6v1AnK34b2wysOLJHSjl78p/3hL7grte0XCPRqCfLZDwq98AD9GHMTCRfZy7TEeHhw==",
+      "path": "nito.asyncex.context/5.1.0",
+      "hashPath": "nito.asyncex.context.5.1.0.nupkg.sha512"
+    },
+    "Nito.AsyncEx.Coordination/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nv+oA+cSxidjOImiKcz2FJgMIDxiK0A6xormKmsUklUBjTNqQpjtdJsACMgTQG56PkTHdbMi5QijPTTUsmcCeg==",
+      "path": "nito.asyncex.coordination/5.1.0",
+      "hashPath": "nito.asyncex.coordination.5.1.0.nupkg.sha512"
+    },
+    "Nito.AsyncEx.Interop.WaitHandles/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wFm3lrXXNPBtZHjLI21xhcADoh5CzO5KKNO38ybLO/CcL9zMUWWfsNiAFbw8JGp/wHoxhfdEUlThBnY3XaLR/w==",
+      "path": "nito.asyncex.interop.waithandles/5.1.0",
+      "hashPath": "nito.asyncex.interop.waithandles.5.1.0.nupkg.sha512"
+    },
+    "Nito.AsyncEx.Oop/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J5DVgQrmE9qMNhK2eEMsuEw7V7cw7MIPrv3jqqQWolzDXkOxJFFYKUK+4dnC6UAEmum3xRVD2oBAoXg0vdYDDQ==",
+      "path": "nito.asyncex.oop/5.1.0",
+      "hashPath": "nito.asyncex.oop.5.1.0.nupkg.sha512"
+    },
+    "Nito.AsyncEx.Tasks/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tU3Ib4zs8ivM+uS8n7F7ReWZlA3mODyLqwPE+v+WJI94hZ8xLXl+a9npfj/IcmeXo9a6fGKLWkswKQHOeTWqwA==",
+      "path": "nito.asyncex.tasks/5.1.0",
+      "hashPath": "nito.asyncex.tasks.5.1.0.nupkg.sha512"
+    },
+    "Nito.Cancellation/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BSezc6jsEEAoa8UtVjQ6Qr/D5xX+FozlDKFHAvDeTv24I7ZZmmfbFxEmdjaSLnrboz1WMRjUKCQwZw7Gf4+WcA==",
+      "path": "nito.cancellation/1.1.0",
+      "hashPath": "nito.cancellation.1.1.0.nupkg.sha512"
+    },
+    "Nito.Collections.Deque/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RXHe531Oaw2IathDr0Q2kbid0iuudBxtgZsfBZ2eUPuFI8I1P7HMiuUeaIefqYykcDYFTDQsFAPAljduIjihLA==",
+      "path": "nito.collections.deque/1.1.0",
+      "hashPath": "nito.collections.deque.1.1.0.nupkg.sha512"
+    },
+    "Nito.Disposables/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QcL+uBwUCEoK8GKp/WzjdCiG8/3G1WLlVNJgLJUNG7bIIVAcEV+Mro4s53VT4Nd8xMSplv0gy+Priw44vRvLaA==",
+      "path": "nito.disposables/2.2.0",
+      "hashPath": "nito.disposables.2.2.0.nupkg.sha512"
+    },
+    "Pdf417EncoderLibrary/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ALrP7wjrPt7csiJA1a9+HSWDARNx1sWqdeUBmUBXaR5PzGt0VucCIMgxYSi6Hnb7ok88YDKltd4qVuzKoytwNg==",
+      "path": "pdf417encoderlibrary/2.1.0",
+      "hashPath": "pdf417encoderlibrary.2.1.0.nupkg.sha512"
+    },
+    "Portable.BouncyCastle/1.8.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XLhjNAwuVB9ynwn11l5K44eyozh8q6gFseTrlnLNttejimglX7+F9+vxh60LPjvA/DAt6fUdS43N3ah8K6eaWg==",
+      "path": "portable.bouncycastle/1.8.10",
+      "hashPath": "portable.bouncycastle.1.8.10.nupkg.sha512"
+    },
+    "QRCoder/1.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W8KwCwsOJe9SI7Cm7XeIMawd08F/US6xNw34lg2Qnx6m7GYYakxbyBQaNoW1Q75oJOmX/32sJUZr6Cix2B6GUQ==",
+      "path": "qrcoder/1.4.1",
+      "hashPath": "qrcoder.1.4.1.nupkg.sha512"
+    },
+    "SixLabors.ImageSharp/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oRmZEITad+0tL22ZfAbLps6doDV+Z0/oH0dtXLpIBwn1sgai3QxxDQPjohHiDeUp/CTzRKVrFFbc4ZITnL2UBg==",
+      "path": "sixlabors.imagesharp/1.0.3",
+      "hashPath": "sixlabors.imagesharp.1.0.3.nupkg.sha512"
+    },
+    "SvgLib/1.0.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-P0yTxzKvkdfAulrVeUJ3gQr1nOXzEuF5BSUWLvCKzQwWL49xOmCYykM+y9KjSW1bpC6fSFsyF1YP/rStGKIUSQ==",
+      "path": "svglib/1.0.0.1",
+      "hashPath": "svglib.1.0.0.1.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/4.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jz3TWKMAeuDEyrPCK5Jyt4bzQcmzUIMcY9Ud6PkElFxTfnsihV+9N/UCqvxe1z5gc7jMYAnj7V1COMS9QKIuHQ==",
+      "path": "system.configuration.configurationmanager/4.4.1",
+      "hashPath": "system.configuration.configurationmanager.4.4.1.nupkg.sha512"
+    },
+    "System.Diagnostics.DiagnosticSource/7.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hYr3I9N9811e0Bjf2WNwAGGyTuAFbbTgX1RPLt/3Wbm68x3IGcX5Cl75CMmgT6WlNwLQ2tCCWfqYPpypjaf2xA==",
+      "path": "system.diagnostics.diagnosticsource/7.0.2",
+      "hashPath": "system.diagnostics.diagnosticsource.7.0.2.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "path": "system.drawing.common/5.0.2",
+      "hashPath": "system.drawing.common.5.0.2.nupkg.sha512"
+    },
+    "System.IdentityModel.Tokens.Jwt/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j57TBY3Xf989vFUt2C25DpDqM8P4Re1bi4GL3U6L6VVgJr+AZIWmA1SMEOKyaIwSP0rHWimQh4jGxzycidGflQ==",
+      "path": "system.identitymodel.tokens.jwt/6.11.0",
+      "hashPath": "system.identitymodel.tokens.jwt.6.11.0.nupkg.sha512"
+    },
+    "System.IO.Pipelines/6.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
+      "path": "system.io.pipelines/6.0.3",
+      "hashPath": "system.io.pipelines.6.0.3.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Pkcs/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0Srzh6YlhjuMxaqMyeCCdZs22cucaUAG6SKDd3gNHBJmre0VZ71ekzWu9rvLD4YXPetyNdPvV6Qst+8C++9v3Q==",
+      "path": "system.security.cryptography.pkcs/4.7.0",
+      "hashPath": "system.security.cryptography.pkcs.4.7.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cJV7ScGW7EhatRsjehfvvYVBvtiSMKgN8bOVI0bQhnF5bU7vnHVIsH49Kva7i7GWaWYvmEzkYVk1TC+gZYBEog==",
+      "path": "system.security.cryptography.protecteddata/4.4.0",
+      "hashPath": "system.security.cryptography.protecteddata.4.4.0.nupkg.sha512"
+    },
+    "System.Security.Permissions/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dkOV6YYVBnYRa15/yv004eCGRBVADXw8qRbbNiCn/XpdJSUXkkUeIvdvFHkvnko4CdKMqG8yRHC4ox83LSlMsQ==",
+      "path": "system.security.permissions/4.7.0",
+      "hashPath": "system.security.permissions.4.7.0.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OP6umVGxc0Z0MvZQBVigj4/U31Pw72ITihDWP9WiWDm+q5aoe0GaJivsfYGq53o6dxH7DcXWiCTl7+0o2CGdmg==",
+      "path": "system.text.encodings.web/7.0.0",
+      "hashPath": "system.text.encodings.web.7.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/7.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-OtDEmCCiNl8JAduFKZ/r0Sw6XZNHwIicUYy/mXgMDGeOsZLshH37qi3oPRzFYiryVktiMoQLByMGPtRCEMYbeQ==",
+      "path": "system.text.json/7.0.1",
+      "hashPath": "system.text.json.7.0.1.nupkg.sha512"
+    },
+    "System.Windows.Extensions/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
+      "path": "system.windows.extensions/4.7.0",
+      "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "ZstdSharp.Port/0.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Idgg+mJEyAujqDPzA3APy9dNoyw0YQcNA65GgYjktDRtJ+nvx/hv+J+m6Eax3JJMGEYGy04oc5YNP6ZvQ3Y1vQ==",
+      "path": "zstdsharp.port/0.7.1",
+      "hashPath": "zstdsharp.port.0.7.1.nupkg.sha512"
+    },
+    "Innod.Api.Barcode/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Barcode.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Comprehend/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Core.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Login/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Login.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Polly/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Polly.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.QR/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.QR.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Softmed/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Softmed.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Test/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Test.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Transcribe/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Transcribe.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Translate/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Innod.Api.Translate.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

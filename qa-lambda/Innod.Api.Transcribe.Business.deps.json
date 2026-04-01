@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-x64": {
+      "Innod.Api.Transcribe.Business/1.0.0": {
+        "dependencies": {
+          "AWSSDK.TranscribeService": "3.7.2.12"
+        },
+        "runtime": {
+          "Innod.Api.Transcribe.Business.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.0.17": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.17"
+          }
+        }
+      },
+      "AWSSDK.TranscribeService/3.7.2.12": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.0.17"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.TranscribeService.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.2.12"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Innod.Api.Transcribe.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWSSDK.Core/3.7.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HyyugATncZMqUy0DkjQ3nupTCtQEC71Jv4AUshwoINJCJ3WdysvWPV7tCYiIsBhG7XNaFT1N4wcb0kztg1Tj3A==",
+      "path": "awssdk.core/3.7.0.17",
+      "hashPath": "awssdk.core.3.7.0.17.nupkg.sha512"
+    },
+    "AWSSDK.TranscribeService/3.7.2.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o6ylnjNj9O9D/3R1Bo/YX/+Wcjlxc7sP85PN8HcIEGKlq2aL6Tki6MIXmk/6FhVUsJSGZA+SbqF2SuM8shaGog==",
+      "path": "awssdk.transcribeservice/3.7.2.12",
+      "hashPath": "awssdk.transcribeservice.3.7.2.12.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-x64": {
+      "Innod.Api.Translate.Business/1.0.0": {
+        "dependencies": {
+          "AWSSDK.Translate": "3.7.0.16"
+        },
+        "runtime": {
+          "Innod.Api.Translate.Business.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.0.17": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.17"
+          }
+        }
+      },
+      "AWSSDK.Translate/3.7.0.16": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.0.17"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Translate.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.0.16"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Innod.Api.Translate.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AWSSDK.Core/3.7.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HyyugATncZMqUy0DkjQ3nupTCtQEC71Jv4AUshwoINJCJ3WdysvWPV7tCYiIsBhG7XNaFT1N4wcb0kztg1Tj3A==",
+      "path": "awssdk.core/3.7.0.17",
+      "hashPath": "awssdk.core.3.7.0.17.nupkg.sha512"
+    },
+    "AWSSDK.Translate/3.7.0.16": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E7Yt6LTrRX93Vf18jPZwCw8grU6vVRGOI6fhej1SCBBe1Cd4ABzru92LjhukTcORMFp/5yRDsa+BNGrjel/qdQ==",
+      "path": "awssdk.translate/3.7.0.16",
+      "hashPath": "awssdk.translate.3.7.0.16.nupkg.sha512"
+    }
+  }
+}
