@@ -137,6 +137,44 @@ public static class RepoExamen
         return await conn.QueryAsync(sql);
     }
 
+    // ─── TRANSICIONES DE ESTADO ─────────────────────────────────────────────
+
+    public static async Task<IEnumerable<dynamic>> ObtenerEstadosSiguientes(
+        int estadoActualId, string[] roles, MySqlConnection conn)
+    {
+        const string sql = @"
+            SELECT DISTINCT
+                ee.id_estado_destino AS IdEstado,
+                es.nombre            AS NombreEstado,
+                es.orden             AS Orden,
+                ee.descripcion       AS Descripcion
+            FROM   TBL_ETAPA_ESTADO ee
+            INNER JOIN TBL_ESTADO   es ON es.id_estado = ee.id_estado_destino
+            WHERE  ee.id_estado_origen = @estadoActualId
+              AND  ee.rol IN @roles
+              AND  ee.activo = 1
+              AND  es.activo = 1
+            ORDER BY es.orden";
+
+        return await conn.QueryAsync(sql, new { estadoActualId, roles });
+    }
+
+    public static async Task<bool> ValidarTransicion(
+        int estadoOrigenId, int estadoDestinoId, string[] roles, MySqlConnection conn)
+    {
+        const string sql = @"
+            SELECT COUNT(*)
+            FROM   TBL_ETAPA_ESTADO
+            WHERE  id_estado_origen  = @estadoOrigenId
+              AND  id_estado_destino = @estadoDestinoId
+              AND  rol IN @roles
+              AND  activo = 1";
+
+        var count = await conn.ExecuteScalarAsync<int>(
+            sql, new { estadoOrigenId, estadoDestinoId, roles });
+        return count > 0;
+    }
+
     // ─── INSERT ───────────────────────────────────────────────────────────────
 
     public static async Task<int> InsertarExamen(
@@ -297,7 +335,7 @@ public static class RepoExamen
             WHERE e.id_examen = @idExamen
               AND t.id_tenant = @tenantId";
 
-        await conn.ExecuteAsync(sql, new { idExamen, idSignatario, tenantId, estadoFirmado = 16 }, tx);
+        await conn.ExecuteAsync(sql, new { idExamen, idSignatario, tenantId, estadoFirmado = 17 }, tx);
     }
 
     public static async Task SetFechaEntrega(

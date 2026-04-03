@@ -14,13 +14,13 @@ public sealed class LogicaExamen
     private readonly int       _idUsuario;
     private readonly string    _ip;
 
-    private const int EstadoInicial   = 1;  // CREADO
-    private const int EstadoFirmado   = 16; // FIRMADO
-    private const int EstadoEntregado = 17; // ENTREGADO
-    private const int EstadoRechazado = 18; // RECHAZADO
-    private const int EstadoAnulado   = 19; // ANULADO
-    private const int EstadoReFirmado = 20; // RE_FIRMADO
-    private const int EstadoReEntregado = 21; // RE_ENTREGADO
+    private const int EstadoInicial     = 1;  // CREADO
+    private const int EstadoFirmado     = 17; // FIRMADO
+    private const int EstadoEntregado   = 18; // ENTREGADO
+    private const int EstadoRechazado   = 19; // RECHAZADO
+    private const int EstadoAnulado     = 20; // ANULADO
+    private const int EstadoReFirmado   = 21; // RE_FIRMADO
+    private const int EstadoReEntregado = 22; // RE_ENTREGADO
 
     public LogicaExamen(Solicitud solicitud)
     {
@@ -169,14 +169,27 @@ public sealed class LogicaExamen
         if (datos.ExamenId <= 0)
             throw new ArgumentException("ExamenId es requerido.");
 
+        var roles = _solicitud.UserData?.Roles ?? [];
+
         await using var conn = await Conexion.Instance.GetConnexionAsync();
 
         var estadoActual = await RepoExamen.ObtenerEstadoActual(datos.ExamenId, _tenantId, conn);
         if (estadoActual is null)
             throw new KeyNotFoundException($"Examen {datos.ExamenId} no encontrado.");
 
-        if (estadoActual >= EstadoFirmado)
-            throw new InvalidOperationException("El examen ya se encuentra firmado.");
+        // Determinar si es firma normal (→17) o re-firma (→21)
+        var estadoDestino = estadoActual.Value == EstadoEntregado
+            ? EstadoReFirmado
+            : EstadoFirmado;
+
+        // Validar transición contra TBL_ETAPA_ESTADO
+        var transicionValida = await RepoExamen.ValidarTransicion(
+            estadoActual.Value, estadoDestino, roles, conn);
+
+        if (!transicionValida)
+            throw new InvalidOperationException(
+                $"No se puede firmar desde el estado actual ({estadoActual}). " +
+                $"Roles: [{string.Join(", ", roles)}].");
 
         await using var tx = await conn.BeginTransactionAsync();
         try
@@ -184,10 +197,15 @@ public sealed class LogicaExamen
             await RepoExamen.FirmarExamen(
                 datos.ExamenId, _idUsuario, _tenantId, conn, tx);
 
+            // Actualizar al estado destino correcto (puede ser RE_FIRMADO)
+            if (estadoDestino == EstadoReFirmado)
+                await RepoExamen.ActualizarEstado(
+                    datos.ExamenId, EstadoReFirmado, _tenantId, conn, tx);
+
             await RepoExamen.InsertarLog(
                 datos.ExamenId,
                 estadoActual.Value,
-                EstadoFirmado,
+                estadoDestino,
                 _idUsuario, _ip,
                 datos.Observacion ?? "Examen firmado",
                 conn, tx);
@@ -274,6 +292,8 @@ public sealed class LogicaExamen
         if (datos.NuevoEstadoId <= 0)
             throw new ArgumentException("NuevoEstadoId es requerido.");
 
+        var roles = _solicitud.UserData?.Roles ?? [];
+
         await using var conn = await Conexion.Instance.GetConnexionAsync();
 
         var estadoActual = await RepoExamen.ObtenerEstadoActual(
@@ -283,13 +303,17 @@ public sealed class LogicaExamen
             throw new KeyNotFoundException(
                 $"Examen {datos.ExamenId} no encontrado en este tenant.");
 
-        if (datos.NuevoEstadoId <= estadoActual.Value)
-            throw new InvalidOperationException(
-                $"No se puede cambiar el estado de {estadoActual} a {datos.NuevoEstadoId}: " +
-                "no se permiten transiciones hacia atrás o al mismo estado.");
+        // Validar transición contra TBL_ETAPA_ESTADO + permisos del rol
+        var transicionValida = await RepoExamen.ValidarTransicion(
+            estadoActual.Value, datos.NuevoEstadoId, roles, conn);
 
-        // No permitir ir a FIRMADO o RE_FIRMADO vía CambiarEstado, usar endpoint FIRMAR
-        if (datos.NuevoEstadoId == EstadoFirmado || datos.NuevoEstadoId == 20)
+        if (!transicionValida)
+            throw new InvalidOperationException(
+                $"Transición no permitida: estado {estadoActual} → {datos.NuevoEstadoId} " +
+                $"para los roles [{string.Join(", ", roles)}].");
+
+        // FIRMADO y RE_FIRMADO requieren endpoint FIRMAR
+        if (datos.NuevoEstadoId == EstadoFirmado || datos.NuevoEstadoId == EstadoReFirmado)
             throw new InvalidOperationException(
                 "Para firmar un examen utilice el endpoint FIRMAR.");
 
@@ -299,8 +323,7 @@ public sealed class LogicaExamen
             await RepoExamen.ActualizarEstado(
                 datos.ExamenId, datos.NuevoEstadoId, _tenantId, conn, tx);
 
-            // Setear fecha_entrega cuando se marca como ENTREGADO
-            if (datos.NuevoEstadoId == EstadoEntregado)
+            if (datos.NuevoEstadoId == EstadoEntregado || datos.NuevoEstadoId == EstadoReEntregado)
                 await RepoExamen.SetFechaEntrega(datos.ExamenId, _tenantId, conn, tx);
 
             await RepoExamen.InsertarLog(
@@ -325,9 +348,33 @@ public sealed class LogicaExamen
 
     // ─── ObtenerEstados ──────────────────────────────────────────────────────
 
-    public async Task<object> ObtenerEstados()
+    public async Task<object> ObtenerEstados(int? examenId = null)
     {
+        var roles = _solicitud.UserData?.Roles ?? [];
+
         await using var conn = await Conexion.Instance.GetConnexionAsync();
+
+        // Si se pasa un examenId, devolver solo los estados siguientes válidos
+        if (examenId.HasValue && examenId.Value > 0)
+        {
+            var estadoActual = await RepoExamen.ObtenerEstadoActual(
+                examenId.Value, _tenantId, conn);
+
+            if (estadoActual is null)
+                throw new KeyNotFoundException(
+                    $"Examen {examenId.Value} no encontrado en este tenant.");
+
+            var siguientes = await RepoExamen.ObtenerEstadosSiguientes(
+                estadoActual.Value, roles, conn);
+
+            return new
+            {
+                estadoActualId = estadoActual.Value,
+                estadosSiguientes = siguientes
+            };
+        }
+
+        // Sin examenId: devolver todos los estados (catálogo)
         var estados = await RepoExamen.ObtenerEstados(conn);
         return estados;
     }
@@ -476,6 +523,12 @@ public sealed class LogicaExamen
         if (datos.NuevoEstadoId <= 0)
             throw new ArgumentException("NuevoEstadoId requerido.");
 
+        if (datos.NuevoEstadoId == EstadoFirmado || datos.NuevoEstadoId == EstadoReFirmado)
+            throw new InvalidOperationException(
+                "Para firmar exámenes utilice el endpoint FIRMAR.");
+
+        var roles = _solicitud.UserData?.Roles ?? [];
+
         await using var conn = await Conexion.Instance.GetConnexionAsync();
         var exitosos = 0;
         var errores = new List<string>();
@@ -486,9 +539,20 @@ public sealed class LogicaExamen
             {
                 var estadoActual = await RepoExamen.ObtenerEstadoActual(idExamen, _tenantId, conn);
                 if (estadoActual is null) { errores.Add($"{idExamen}: no encontrado"); continue; }
-                if (datos.NuevoEstadoId <= estadoActual.Value) { errores.Add($"{idExamen}: estado no permite avanzar"); continue; }
+
+                var valida = await RepoExamen.ValidarTransicion(
+                    estadoActual.Value, datos.NuevoEstadoId, roles, conn);
+                if (!valida)
+                {
+                    errores.Add($"{idExamen}: transición {estadoActual}→{datos.NuevoEstadoId} no permitida");
+                    continue;
+                }
 
                 await RepoExamen.ActualizarEstado(idExamen, datos.NuevoEstadoId, _tenantId, conn);
+
+                if (datos.NuevoEstadoId == EstadoEntregado || datos.NuevoEstadoId == EstadoReEntregado)
+                    await RepoExamen.SetFechaEntrega(idExamen, _tenantId, conn);
+
                 await RepoExamen.InsertarLog(idExamen, estadoActual.Value, datos.NuevoEstadoId,
                     _idUsuario, _ip, datos.Observacion ?? "Cambio masivo", conn);
                 exitosos++;

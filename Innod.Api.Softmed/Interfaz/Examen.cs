@@ -24,6 +24,11 @@ internal sealed class Examen
         new(StringComparer.OrdinalIgnoreCase)
             { "SM_ADM_SISTEMA", "SM_DEVELOPER" };
 
+    // Roles que pueden cambiar estado (todos menos SM_INFORMANTE)
+    private static readonly HashSet<string> _rolesCambioEstado =
+        new(StringComparer.OrdinalIgnoreCase)
+            { "SM_SOLICITANTE", "SM_JEFE_LABORATORIO", "SM_ADM_SISTEMA", "SM_DEVELOPER" };
+
     private static readonly JsonSerializerOptions _jsonOpts =
         new() { PropertyNameCaseInsensitive = true };
 
@@ -62,11 +67,11 @@ internal sealed class Examen
                                      () => _logica.EditarPostEmision(
                                          Deserializar<DatosEditarPostEmision>()
                                          ?? throw new ArgumentException("Data requerido para EDITAR_POST_EMISION."))),
-            "CAMBIAR_ESTADO"  => await EjecutarConRol(_rolesJefe,
+            "CAMBIAR_ESTADO"  => await EjecutarConRol(_rolesCambioEstado,
                                      () => _logica.CambiarEstado(
                                          Deserializar<DatosCambiarEstado>()
                                          ?? throw new ArgumentException("Data requerido para CAMBIAR_ESTADO."))),
-            "OBTENER_ESTADOS" => await _logica.ObtenerEstados(),
+            "OBTENER_ESTADOS" => await _logica.ObtenerEstados(DeserializarIdOpcional()),
             "GENERAR_PDF"      => await EjecutarConRol(_rolesJefe,
                                      () => _logica.GenerarPdf(DeserializarId())),
             "OBTENER_MUESTRAS" => await _logica.ObtenerMuestras(DeserializarId()),
@@ -137,6 +142,17 @@ internal sealed class Examen
         var examen = await _logica.ObtenerPorId(idExamen);
         var barcode = ((dynamic)examen).examen?.barcode?.ToString() ?? "";
         return new { barcode, svg = Common.Util.BarcodeGenerator.GenerateSvg(barcode) };
+    }
+
+    private int? DeserializarIdOpcional()
+    {
+        if (_solicitud.Data is not JsonElement el) return null;
+        if (el.TryGetProperty("id", out var p) || el.TryGetProperty("IdExamen", out p) ||
+            el.TryGetProperty("ExamenId", out p))
+        {
+            if (p.TryGetInt32(out var val)) return val;
+        }
+        return null;
     }
 
     private string DeserializarTexto()
