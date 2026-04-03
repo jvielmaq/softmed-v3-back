@@ -12,8 +12,11 @@ public class Accion
     public Task<object> Ejecutar(Solicitud solicitud) =>
         solicitud.ACTION.ToUpperInvariant() switch
         {
-            "AUTENTICAR" => new Autenticar(solicitud).Ejecutar(),
-            _            => throw new UnauthorizedAccessException(
-                                $"Acción '{solicitud.ACTION}' no reconocida en el módulo LOGIN.")
+            "AUTENTICAR"            => new Autenticar(solicitud).Ejecutar(),
+            "CAMBIAR_PASSWORD"      => new CambiarPassword(solicitud).Ejecutar(),
+            "SOLICITAR_RECUPERACION" => new RecuperarPassword(solicitud).SolicitarRecuperacion(),
+            "PROCESAR_RECUPERACION"  => new RecuperarPassword(solicitud).ProcesarRecuperacion(),
+            _                       => throw new UnauthorizedAccessException(
+                                           $"Acción '{solicitud.ACTION}' no reconocida en el módulo LOGIN.")
         };
 }

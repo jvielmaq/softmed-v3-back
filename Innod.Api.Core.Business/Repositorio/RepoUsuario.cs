@@ -179,4 +179,75 @@ public static class RepoUsuario
         const string sql = "SELECT id_persona FROM TBL_USUARIO WHERE id_usuario = @idUsuario LIMIT 1";
         return await conn.ExecuteScalarAsync<int>(sql, new { idUsuario });
     }
+
+    // ─── ROLES ────────────────────────────────────────────────────────────────
+
+    public static async Task<IEnumerable<dynamic>> ObtenerRolesUsuario(int idUsuario, MySqlConnection conn)
+    {
+        const string sql = @"
+            SELECT ru.id_rol_usuario AS IdRolUsuario, r.id_rol AS IdRol,
+                   r.nombre_rol AS NombreRol, r.descripcion AS Descripcion, ru.activo AS Activo
+            FROM TBL_ROL_USUARIO ru
+            INNER JOIN TBL_ROL r ON r.id_rol = ru.id_rol
+            WHERE ru.id_usuario = @idUsuario AND ru.activo = 1
+            ORDER BY r.nombre_rol";
+        return await conn.QueryAsync(sql, new { idUsuario });
+    }
+
+    public static async Task AgregarRol(int idUsuario, int idRol, MySqlConnection conn)
+    {
+        const string sql = @"
+            INSERT INTO TBL_ROL_USUARIO (id_usuario, id_rol, activo) VALUES (@idUsuario, @idRol, 1)
+            ON DUPLICATE KEY UPDATE activo = 1";
+        await conn.ExecuteAsync(sql, new { idUsuario, idRol });
+    }
+
+    public static async Task QuitarRol(int idRolUsuario, MySqlConnection conn)
+    {
+        await conn.ExecuteAsync("UPDATE TBL_ROL_USUARIO SET activo = 0 WHERE id_rol_usuario = @idRolUsuario",
+            new { idRolUsuario });
+    }
+
+    // ─── EMPLEOS ──────────────────────────────────────────────────────────────
+
+    public static async Task<IEnumerable<dynamic>> ObtenerEmpleosUsuario(int idUsuario, MySqlConnection conn)
+    {
+        const string sql = @"
+            SELECT ee.id_empleo AS IdEmpleo, i.nombre AS Institucion, c.nombre AS Cargo,
+                   es.nombre AS Especialidad, ee.activo AS Activo
+            FROM TBL_USUARIO u
+            INNER JOIN TBL_EMPLEADO e ON e.id_persona = u.id_persona
+            INNER JOIN TBL_EMPLEADO_EMPLEOS ee ON ee.id_empleado = e.id_empleado
+            LEFT JOIN TBL_INSTITUCION i ON i.id_institucion = ee.id_institucion
+            LEFT JOIN TBL_CARGO c ON c.id_cargo = ee.id_cargo
+            LEFT JOIN TBL_ESPECIALIDAD es ON es.id_especialidad = ee.id_especialidad
+            WHERE u.id_usuario = @idUsuario AND ee.activo = 1
+            ORDER BY i.nombre";
+        return await conn.QueryAsync(sql, new { idUsuario });
+    }
+
+    public static async Task<int> ObtenerOCrearEmpleado(int idPersona, MySqlConnection conn)
+    {
+        var id = await conn.ExecuteScalarAsync<int?>(
+            "SELECT id_empleado FROM TBL_EMPLEADO WHERE id_persona = @idPersona LIMIT 1",
+            new { idPersona });
+        if (id.HasValue) return id.Value;
+        return await conn.ExecuteScalarAsync<int>(
+            "INSERT INTO TBL_EMPLEADO (id_persona, activo) VALUES (@idPersona, 1); SELECT LAST_INSERT_ID();",
+            new { idPersona });
+    }
+
+    public static async Task AgregarEmpleo(int idEmpleado, int idInstitucion, int? idCargo, int? idEspecialidad, MySqlConnection conn)
+    {
+        const string sql = @"
+            INSERT INTO TBL_EMPLEADO_EMPLEOS (id_empleado, id_institucion, id_cargo, id_especialidad, activo)
+            VALUES (@idEmpleado, @idInstitucion, @idCargo, @idEspecialidad, 1)";
+        await conn.ExecuteAsync(sql, new { idEmpleado, idInstitucion, idCargo, idEspecialidad });
+    }
+
+    public static async Task QuitarEmpleo(int idEmpleo, MySqlConnection conn)
+    {
+        await conn.ExecuteAsync("UPDATE TBL_EMPLEADO_EMPLEOS SET activo = 0 WHERE id_empleo = @idEmpleo",
+            new { idEmpleo });
+    }
 }

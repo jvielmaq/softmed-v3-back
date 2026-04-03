@@ -19,14 +19,19 @@ public sealed class Autenticar
     public async Task<object> Ejecutar()
     {
         // ── 1. Extraer email y password de Solicitud.Data ─────────────────────
-        var dataJson = _solicitud.Data as string ?? string.Empty;
-        if (string.IsNullOrWhiteSpace(dataJson))
+        if (_solicitud.Data is null)
             throw new ArgumentException("El campo 'Data' es requerido para la acción AUTENTICAR.");
 
-        var datos = JsonSerializer.Deserialize<DatosLogin>(dataJson, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        }) ?? throw new ArgumentException("No se pudo deserializar los datos de login.");
+        var jsonOpts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        DatosLogin? datos;
+
+        if (_solicitud.Data is JsonElement el)
+            datos = el.Deserialize<DatosLogin>(jsonOpts);
+        else
+            datos = JsonSerializer.Deserialize<DatosLogin>(_solicitud.Data as string ?? "", jsonOpts);
+
+        if (datos is null)
+            throw new ArgumentException("No se pudo deserializar los datos de login.");
 
         // ── 2. Validar formato de entrada ─────────────────────────────────────
         ValidadorLogin.Validar(datos.Email, datos.Password);
@@ -68,11 +73,12 @@ public sealed class Autenticar
             token = jwt,
             usuario = new
             {
-                id       = usuario.IdUsuario,
-                nombre   = usuario.Nombres,
-                apellido = usuario.Apellidos,
-                email    = usuario.Email,
-                rol      = usuario.NombreRol
+                id              = usuario.IdUsuario,
+                nombre          = usuario.Nombres,
+                apellido        = usuario.Apellidos,
+                email           = usuario.Email,
+                rol             = usuario.NombreRol,
+                requiere_cambio = usuario.RequiereCambio
             }
         };
     }

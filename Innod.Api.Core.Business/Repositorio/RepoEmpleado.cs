@@ -18,16 +18,17 @@ public static class RepoEmpleado
                 p.nombres         AS Nombres,
                 p.apellidos       AS Apellidos,
                 p.identificador   AS Identificador,
-                e.id_cargo        AS IdCargo,
+                ee.id_cargo       AS IdCargo,
                 c.nombre          AS Cargo,
-                e.id_especialidad AS IdEspecialidad,
+                ee.id_especialidad AS IdEspecialidad,
                 es.nombre         AS Especialidad,
                 e.activo          AS Activo
-            FROM       TBL_EMPLEADO      e
-            INNER JOIN TBL_PERSONA       p  ON p.id_persona      = e.id_persona
-            INNER JOIN TBL_TENANT        t  ON t.id_tenant       = @tenantId
-            LEFT  JOIN TBL_CARGO         c  ON c.id_cargo        = e.id_cargo
-            LEFT  JOIN TBL_ESPECIALIDAD  es ON es.id_especialidad = e.id_especialidad
+            FROM       TBL_EMPLEADO         e
+            INNER JOIN TBL_PERSONA          p  ON p.id_persona       = e.id_persona
+            INNER JOIN TBL_TENANT           t  ON t.id_tenant        = @tenantId
+            LEFT  JOIN TBL_EMPLEADO_EMPLEOS ee ON ee.id_empleado     = e.id_empleado AND ee.activo = 1
+            LEFT  JOIN TBL_CARGO            c  ON c.id_cargo         = ee.id_cargo
+            LEFT  JOIN TBL_ESPECIALIDAD     es ON es.id_especialidad = ee.id_especialidad
             WHERE e.activo = 1
             ORDER BY p.apellidos, p.nombres";
 
@@ -40,9 +41,9 @@ public static class RepoEmpleado
     {
         const string sql = @"
             INSERT INTO TBL_EMPLEADO
-                (id_persona, id_cargo, id_especialidad, activo)
+                (id_persona, activo)
             VALUES
-                (@IdPersona, @IdCargo, @IdEspecialidad, @Activo);
+                (@IdPersona, 1);
             SELECT LAST_INSERT_ID();";
 
         return await conn.ExecuteScalarAsync<int>(sql, datos);
@@ -54,11 +55,10 @@ public static class RepoEmpleado
         int idEmpleado, bool activo, int tenantId, MySqlConnection conn)
     {
         const string sql = @"
-            UPDATE TBL_EMPLEADO em
-            INNER JOIN TBL_TENANT t ON t.id_tenant = @tenantId
-            SET em.activo = @activo
-            WHERE em.id_empleado = @idEmpleado";
+            UPDATE TBL_EMPLEADO
+            SET activo = @activo
+            WHERE id_empleado = @idEmpleado";
 
-        await conn.ExecuteAsync(sql, new { idEmpleado, activo, tenantId });
+        await conn.ExecuteAsync(sql, new { idEmpleado, activo });
     }
 }

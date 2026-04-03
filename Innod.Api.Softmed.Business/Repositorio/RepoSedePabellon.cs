@@ -17,7 +17,7 @@ public static class RepoSedePabellon
             SELECT s.id_sede        AS IdSede,
                    s.nombre         AS Nombre,
                    s.direccion      AS Direccion,
-                   s.telefono       AS Telefono,
+                   NULL             AS Telefono,
                    s.id_institucion AS IdInstitucion,
                    i.nombre         AS Institucion,
                    s.activo         AS Activo
@@ -37,7 +37,7 @@ public static class RepoSedePabellon
             SELECT s.id_sede        AS IdSede,
                    s.nombre         AS Nombre,
                    s.direccion      AS Direccion,
-                   s.telefono       AS Telefono,
+                   NULL             AS Telefono,
                    s.id_institucion AS IdInstitucion,
                    i.nombre         AS Institucion,
                    s.activo         AS Activo
@@ -57,9 +57,9 @@ public static class RepoSedePabellon
     {
         const string sql = @"
             INSERT INTO TBL_SEDE
-                (nombre, direccion, telefono, id_institucion, activo)
+                (nombre, direccion, id_institucion, activo)
             VALUES
-                (@Nombre, @Direccion, @Telefono, @IdInstitucion, @Activo);
+                (@Nombre, @Direccion, @IdInstitucion, @Activo);
             SELECT LAST_INSERT_ID();";
 
         return await conn.ExecuteScalarAsync<int>(sql, datos);
@@ -73,8 +73,7 @@ public static class RepoSedePabellon
             INNER JOIN TBL_INSTITUCION i ON i.id_institucion = s.id_institucion
             INNER JOIN TBL_TENANT      t ON t.id_institucion = i.id_institucion
             SET s.nombre    = @Nombre,
-                s.direccion = @Direccion,
-                s.telefono  = @Telefono
+                s.direccion = @Direccion
             WHERE s.id_sede   = @IdSede
               AND t.id_tenant = @tenantId";
 
@@ -104,9 +103,11 @@ public static class RepoSedePabellon
     // ═══════════════════════════════════════════════════════════════════════════
 
     public static async Task<IEnumerable<PabellonCore>> ListaPabellones(
-        int tenantId, MySqlConnection conn)
+        int tenantId, MySqlConnection conn, int? idSede = null)
     {
-        const string sql = @"
+        var whereExtra = idSede.HasValue ? " AND pb.id_sede = @idSede" : "";
+
+        var sql = $@"
             SELECT pb.id_pabellon AS IdPabellon,
                    pb.nombre      AS Nombre,
                    pb.id_sede     AS IdSede,
@@ -116,10 +117,10 @@ public static class RepoSedePabellon
             INNER JOIN TBL_SEDE        s ON s.id_sede        = pb.id_sede
             INNER JOIN TBL_INSTITUCION i ON i.id_institucion = s.id_institucion
             INNER JOIN TBL_TENANT      t ON t.id_institucion = i.id_institucion
-            WHERE t.id_tenant = @tenantId
+            WHERE t.id_tenant = @tenantId{whereExtra}
             ORDER BY s.nombre, pb.nombre";
 
-        return await conn.QueryAsync<PabellonCore>(sql, new { tenantId });
+        return await conn.QueryAsync<PabellonCore>(sql, new { tenantId, idSede });
     }
 
     public static async Task<int> InsertaPabellon(

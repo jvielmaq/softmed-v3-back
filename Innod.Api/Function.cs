@@ -27,10 +27,32 @@ public class Function
         PropertyNameCaseInsensitive = true
     };
 
+    private static readonly JsonSerializerOptions _jsonOutputOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+    };
+
     public async Task<APIGatewayProxyResponse> FunctionHandler(
         APIGatewayProxyRequest request,
         ILambdaContext context)
     {
+        // ── 0. Preflight CORS ────────────────────────────────────────────
+        var httpMethod = request.HttpMethod ?? request.RequestContext?.HttpMethod ?? "";
+        if (httpMethod.Equals("OPTIONS", StringComparison.OrdinalIgnoreCase))
+        {
+            return new APIGatewayProxyResponse
+            {
+                StatusCode = 200,
+                Body       = string.Empty,
+                Headers    = new Dictionary<string, string>
+                {
+                    ["Access-Control-Allow-Origin"]  = "*",
+                    ["Access-Control-Allow-Headers"] = "Content-Type,Authorization",
+                    ["Access-Control-Allow-Methods"] = "POST,OPTIONS"
+                }
+            };
+        }
+
         Solicitud? solicitud = null;
 
         try
@@ -50,8 +72,24 @@ public class Function
                     case "ACTION": solicitud.ACTION = val; break;
                     case "TARGET": solicitud.TARGET = val; break;
                     case "TOKEN":  solicitud.Token  = val; break;
-                    case "DATA":   solicitud.Data   = val; break;
+                    case "DATA":
+                        solicitud.Data = string.IsNullOrWhiteSpace(val)
+                            ? null
+                            : JsonSerializer.Deserialize<JsonElement>(val);
+                        break;
                 }
+            }
+
+            // ── 1b. Token desde header Authorization (Bearer) ────────────
+            if (string.IsNullOrWhiteSpace(solicitud.Token)
+                && request.Headers != null)
+            {
+                var authHeader = request.Headers
+                    .FirstOrDefault(h => h.Key.Equals("Authorization", StringComparison.OrdinalIgnoreCase))
+                    .Value;
+
+                if (authHeader != null && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                    solicitud.Token = authHeader["Bearer ".Length..].Trim();
             }
 
             if (solicitud is null || string.IsNullOrWhiteSpace(solicitud.MODULE))
@@ -103,10 +141,13 @@ public class Function
         new()
         {
             StatusCode = statusCode,
-            Body       = JsonSerializer.Serialize(body),
+            Body       = JsonSerializer.Serialize(body, _jsonOutputOptions),
             Headers    = new Dictionary<string, string>
             {
-                ["Content-Type"] = "application/json"
+                ["Content-Type"]                 = "application/json",
+                ["Access-Control-Allow-Origin"]   = "*",
+                ["Access-Control-Allow-Headers"]  = "Content-Type,Authorization",
+                ["Access-Control-Allow-Methods"]  = "POST,OPTIONS"
             }
         };
 }

@@ -20,4 +20,11 @@ public sealed class DatosUsuario
     public string ClaveActual   { get; set; } = string.Empty;
     public string ClaveNueva    { get; set; } = string.Empty;
     public bool   Activo        { get; set; }
+    public int?   IdPersona     { get; set; }
+    // Para agregar/quitar rol
+    public int?   IdRolUsuario  { get; set; }
+    // Para agregar/quitar empleo
+    public int?   IdEmpleado    { get; set; }
+    public int?   IdCargo       { get; set; }
+    public int?   IdEspecialidad { get; set; }
 }

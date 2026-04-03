@@ -40,6 +40,12 @@ internal sealed class Usuario
             "ACTUALIZAR"     => _logica.Actualizar(datos),
             "CAMBIAR_CLAVE"  => _logica.CambiarClave(datos),
             "CAMBIAR_ESTADO" => _logica.CambiarEstado(datos.IdUsuario ?? 0, datos.Activo),
+            "AGREGAR_ROL"    => _logica.AgregarRol(datos),
+            "QUITAR_ROL"     => _logica.QuitarRol(datos),
+            "OBTENER_ROLES_USUARIO" => _logica.ObtenerRolesUsuario(datos.IdUsuario ?? 0),
+            "AGREGAR_EMPLEO" => _logica.AgregarEmpleo(datos),
+            "QUITAR_EMPLEO"  => _logica.QuitarEmpleo(datos),
+            "OBTENER_EMPLEOS_USUARIO" => _logica.ObtenerEmpleosUsuario(datos.IdUsuario ?? 0),
             _ => throw new ArgumentException(
                      $"TARGET '{_solicitud.TARGET}' no reconocido en USUARIO.")
         };

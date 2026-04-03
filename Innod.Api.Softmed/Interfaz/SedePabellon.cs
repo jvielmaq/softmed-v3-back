@@ -1,5 +1,4 @@
 using System.Text.Json;
-using MySqlConnector;
 using Softmed.V3.Common.Modelo;
 using Softmed.V3.Common.Util;
 using Softmed.V3.Softmed.Business.Logica;
@@ -32,8 +31,7 @@ internal sealed class SedePabellon
 
     public async Task<object> Ejecutar()
     {
-        await using var conn = await Conexion.Instance.GetConnexionAsync();
-        VerificarFeatureFlag(conn);
+        await VerificarFeatureFlagAsync();
         ValidarRol();
 
         return _solicitud.TARGET.ToUpperInvariant() switch
@@ -48,7 +46,7 @@ internal sealed class SedePabellon
             "ELIMINAR_SEDE"    => await _logica.EliminarSede(DeserializarId("IdSede")),
 
             // Pabellon
-            "LISTA_PABELLONES"    => await _logica.ListaPabellones(),
+            "LISTA_PABELLONES"    => await _logica.ListaPabellones(DeserializarIdOpcional("IdSede")),
             "CREAR_PABELLON"      => await _logica.CrearPabellon(
                                         DeserializarRequerido<DatosPabellon>()),
             "ACTUALIZAR_PABELLON" => await _logica.ActualizarPabellon(
@@ -61,8 +59,9 @@ internal sealed class SedePabellon
 
     // ─── Privados ─────────────────────────────────────────────────────────────
 
-    private void VerificarFeatureFlag(MySqlConnection conn)
+    private async Task VerificarFeatureFlagAsync()
     {
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
         if (!FeatureFlag.IsModuleActive("examenes", _solicitud.TenantId, conn))
             throw new FeatureFlagException("examenes");
     }
@@ -90,5 +89,15 @@ internal sealed class SedePabellon
         if (el.TryGetProperty("id", out var p) || el.TryGetProperty(campo, out p))
             return p.GetInt32();
         throw new ArgumentException($"Se requiere 'id' o '{campo}' en Data.");
+    }
+
+    private int? DeserializarIdOpcional(string campo)
+    {
+        if (_solicitud.Data is not JsonElement el) return null;
+        if (el.TryGetProperty("id_sede", out var p) || el.TryGetProperty(campo, out p))
+        {
+            if (p.ValueKind == JsonValueKind.Number) return p.GetInt32();
+        }
+        return null;
     }
 }

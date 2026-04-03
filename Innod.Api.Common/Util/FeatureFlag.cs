@@ -17,11 +17,6 @@ public static class FeatureFlag
     /// La tabla puede tener registros globales (tenant_id = 0) que aplican a todos;
     /// un registro específico de tenant tiene precedencia sobre el global.
     /// </summary>
-    /// <param name="modulo">Nombre del módulo. No puede ser vacío.</param>
-    /// <param name="tenantId">Id del tenant. No puede ser 0.</param>
-    /// <param name="conn">Conexión MySQL abierta.</param>
-    /// <returns>true si el módulo está activo; false si no existe o está inactivo.</returns>
-    /// <exception cref="ArgumentException">Si módulo es vacío o tenantId es 0.</exception>
     public static bool IsModuleActive(string modulo, int tenantId, MySqlConnection conn)
     {
         if (string.IsNullOrWhiteSpace(modulo))
@@ -35,8 +30,6 @@ public static class FeatureFlag
         if (_cache.TryGetValue(cacheKey, out var cached) && cached.ExpiresAt > DateTime.UtcNow)
             return cached.Active;
 
-        // Consultar BD: el registro específico del tenant tiene precedencia
-        // sobre el registro global (tenant_id = 0).
         using var cmd = conn.CreateCommand();
         cmd.CommandText = @"
             SELECT activo
@@ -51,7 +44,6 @@ public static class FeatureFlag
 
         var result = cmd.ExecuteScalar();
 
-        // Si no existe registro, retorna false por defecto
         bool active = result is not null && Convert.ToBoolean(result);
 
         _cache[cacheKey] = (active, DateTime.UtcNow.AddMinutes(5));

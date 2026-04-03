@@ -134,8 +134,9 @@ public sealed class Token
             if (userData is null)
                 return null;
 
-            // Verificación adicional de IP
-            if (!string.IsNullOrEmpty(ip) && userData.Ip != ip)
+            // Verificación de IP (deshabilitada en DEV para permitir acceso desde browser)
+            var ambiente = Environment.GetEnvironmentVariable("AMBIENTE") ?? "";
+            if (ambiente != "DEV" && !string.IsNullOrEmpty(ip) && userData.Ip != ip)
                 return null;
 
             return userData;

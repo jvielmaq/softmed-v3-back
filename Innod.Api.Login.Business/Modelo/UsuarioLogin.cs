@@ -10,7 +10,8 @@ public sealed class UsuarioLogin
     public string Clave        { get; set; } = string.Empty;   // hash almacenado
     public string Key          { get; set; } = string.Empty;   // salt derivado del usuario
     public string NombreRol    { get; set; } = string.Empty;
-    public bool   Activo       { get; set; }
-    public int    IdInstitucion { get; set; }
-    public int    TenantId     { get; set; }
+    public bool   Activo          { get; set; }
+    public bool   RequiereCambio  { get; set; }
+    public int    IdInstitucion   { get; set; }
+    public int    TenantId        { get; set; }
 }

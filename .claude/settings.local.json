@@ -21,7 +21,8 @@
       "Bash(powershell.exe -Command \"Get-Command dotnet -ErrorAction SilentlyContinue | Select-Object Source; where.exe dotnet 2>&1\")",
       "Bash(python3:*)",
       "Bash(dotnet-script:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Read(//c/Users/jviel/OneDrive - Nexgen Software/softmed-v3-front/**)"
     ]
   }
 }

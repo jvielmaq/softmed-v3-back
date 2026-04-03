@@ -73,10 +73,10 @@ public sealed class LogicaSedePabellon
     // PABELLON
     // ═══════════════════════════════════════════════════════════════════════════
 
-    public async Task<object> ListaPabellones()
+    public async Task<object> ListaPabellones(int? idSede = null)
     {
         await using var conn = await Conexion.Instance.GetConnexionAsync();
-        return await RepoSedePabellon.ListaPabellones(_tenantId, conn);
+        return await RepoSedePabellon.ListaPabellones(_tenantId, conn, idSede);
     }
 
     public async Task<object> CrearPabellon(DatosPabellon datos)

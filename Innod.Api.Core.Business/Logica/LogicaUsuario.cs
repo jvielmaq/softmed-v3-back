@@ -152,6 +152,64 @@ public sealed class LogicaUsuario
         return new { mensaje = $"Usuario {(activo ? "activado" : "desactivado")} correctamente." };
     }
 
+    // ─── Roles ────────────────────────────────────────────────────────────────
+
+    public async Task<object> ObtenerRolesUsuario(int idUsuario)
+    {
+        if (idUsuario <= 0) throw new ArgumentException("IdUsuario requerido.");
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
+        return await RepoUsuario.ObtenerRolesUsuario(idUsuario, conn);
+    }
+
+    public async Task<object> AgregarRol(DatosUsuario datos)
+    {
+        if ((datos.IdUsuario ?? 0) <= 0) throw new ArgumentException("IdUsuario requerido.");
+        if (datos.IdRol <= 0) throw new ArgumentException("IdRol requerido.");
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
+        await RepoUsuario.AgregarRol(datos.IdUsuario!.Value, datos.IdRol, conn);
+        return new { mensaje = "Rol agregado correctamente." };
+    }
+
+    public async Task<object> QuitarRol(DatosUsuario datos)
+    {
+        if ((datos.IdRolUsuario ?? 0) <= 0) throw new ArgumentException("IdRolUsuario requerido.");
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
+        await RepoUsuario.QuitarRol(datos.IdRolUsuario!.Value, conn);
+        return new { mensaje = "Rol eliminado correctamente." };
+    }
+
+    // ─── Empleos ──────────────────────────────────────────────────────────────
+
+    public async Task<object> ObtenerEmpleosUsuario(int idUsuario)
+    {
+        if (idUsuario <= 0) throw new ArgumentException("IdUsuario requerido.");
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
+        return await RepoUsuario.ObtenerEmpleosUsuario(idUsuario, conn);
+    }
+
+    public async Task<object> AgregarEmpleo(DatosUsuario datos)
+    {
+        if ((datos.IdUsuario ?? 0) <= 0) throw new ArgumentException("IdUsuario requerido.");
+        if (datos.IdInstitucion <= 0) throw new ArgumentException("IdInstitucion requerido.");
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
+        // Get id_persona from usuario
+        var usuario = await RepoUsuario.ObtenerPorId(datos.IdUsuario!.Value, _tenantId, conn);
+        if (usuario is null) throw new KeyNotFoundException("Usuario no encontrado.");
+        var idPersona = ((dynamic)usuario).id_persona;
+        // Get or create empleado
+        var idEmpleado = await RepoUsuario.ObtenerOCrearEmpleado((int)idPersona, conn);
+        await RepoUsuario.AgregarEmpleo(idEmpleado, datos.IdInstitucion, datos.IdCargo, datos.IdEspecialidad, conn);
+        return new { mensaje = "Empleo agregado correctamente." };
+    }
+
+    public async Task<object> QuitarEmpleo(DatosUsuario datos)
+    {
+        if ((datos.IdEmpleado ?? 0) <= 0) throw new ArgumentException("IdEmpleado requerido.");
+        await using var conn = await Conexion.Instance.GetConnexionAsync();
+        await RepoUsuario.QuitarEmpleo(datos.IdEmpleado!.Value, conn);
+        return new { mensaje = "Empleo eliminado correctamente." };
+    }
+
     // ─── Privados ─────────────────────────────────────────────────────────────
 
     private static void ValidarDatosCrear(DatosUsuario datos)
